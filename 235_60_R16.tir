@@ -1,0 +1,292 @@
+%==========================================================================
+% Magic Formula parameters - Alex Dirr input file
+% Tire: 235/60R16 91V, 2.2bar (Pacejka, 2006)
+% Comments:
+%==========================================================================
+
+%--------------------------------------------------------------------------
+% general parameters
+%--------------------------------------------------------------------------
+% free unloaded tire radius
+R_0        = 0.344
+
+% effective rolling radius (R_e = V_x / Omega_0)
+R_e			= 0.322		% R_e        = 0.305 %THIS VALUE IS LIKELY WRONG - NOT GIVEN IN ADAMS FILE
+
+% radius of the circular tire contour
+R_c        = 0.3 %THIS VALUE IS LIKELY WRONG - NOT GIVEN IN ADAMS FILE
+
+% nominal (rated) load
+F_z0       = 4850
+
+% reference velocity
+V_0        = 16.6
+
+% tire stiffnesses
+C_Fx       = 210000	% 435000   
+C_Fy       = 210000		% 166500  
+
+%==========================================================================
+
+%--------------------------------------------------------------------------
+% user scaling factors / default values
+%--------------------------------------------------------------------------
+% pure slip
+lambda_Fz0      = 1.0          % 1.0 nominal (rated) load
+lambda_mux      = 1.0          % 1.0 peak friction coefficient (x)
+lambda_muy      = 1.0          % 1.0 peak friction coefficient (y)
+
+%LMUV IS MISSING FROM OTHER FILE
+lambda_muV      = 0.0          % 0.0 with slip speed decaying friction
+
+%THESE ARE MISSING FROM OTHER FILE
+lambda_KxKap    = 1.0          % 1.0 brake slip stiffness
+Llambda_KyAlp    = 1.0          % 1.0 cornering stiffness
+
+lambda_Cx       = 1.0          % 1.0 shape factor (x)
+lambda_Cy       = 1.0          % 1.0 shape factor (y)
+lambda_Ex       = 1.0          % 1.0 curvature factor (x)
+lambda_Ey       = 1.0          % 1.0 curvature factor (y)
+lambda_Hx       = 1.0          % 1.0 horizontal shift (x)
+lambda_Hy       = 1.0          % 1.0 horizontal shift (y)
+lambda_Vx       = 1.0          % 1.0 vertical shift (x)
+lambda_Vy       = 1.0          % 1.0 vertical shift (y)
+
+%THESE ARE MISSING FROM THE OTHER FILE
+lambda_KyGam    = 1.0          % 1.0 camber force stiffness
+lambda_KzGam    = 1.0          % 1.0 camber torque stiffness
+
+%IS THIS LRT FROM OTHER FILE?
+lambda_t        = 1.0          % 1.0 pneumatic trail
+
+%THIS IS MISSING FROM THE OTHER FILE
+%lambda_Mr       = 1.0          % 1.0 residual torque
+
+% combined slip
+lambda_xAlp     = 1.0          % 1.0 alpha influence on F_x(kappa)
+lambda_yKap     = 1.0          % 1.0 kappa influence on F_y(alpha)
+lambda_VyKap    = 1.0          % 1.0 kappa induces ply-steer F_y
+lambda_s        = 1.0          % 1.0 M_z moment arm of F_x
+
+% other
+%lambda_Cz       = 1.0 %MISSING FROM OTHER FILE
+lambda_Mx       = 1.0
+lambda_My       = 1.0
+%lambda_MPhi     = 1.0 %MISSING FROM OTHER FILE
+
+%==========================================================================
+
+%--------------------------------------------------------------------------
+% parameters for longitudinal force at pure longitudinal slip
+%--------------------------------------------------------------------------
+% shape factor
+p_Cx1      = 1.6411
+
+% peak value
+p_Dx1      = 1.1739
+p_Dx2      = -0.16395
+
+% curvature factors
+p_Ex1      = 0.46403
+p_Ex2      = 0.25022
+p_Ex3      = 0.067842
+p_Ex4      = -3.7604e-005
+
+% horizontal shift
+p_Hx1      = 0.0012297 
+p_Hx2      = 0.0004318
+
+% slip stiffness
+p_Kx1      = 22.303
+p_Kx2      = 0.48896
+p_Kx3      = 0.21253
+
+% vertical shift
+p_Vx1       = -8.8098e-006
+p_Vx2       = 1.862e-005
+
+%--------------------------------------------------------------------------
+% parameters for overturning couple
+%--------------------------------------------------------------------------
+q_sx1       = 0
+q_sx2       = 0
+q_sx3       = 0
+
+%--------------------------------------------------------------------------
+% parameters for longitudinal force at combined slip
+%--------------------------------------------------------------------------
+% stiffness factors
+r_Bx1       = 13.276
+r_Bx2       = -13.778
+%r_Bx3       = 0 %MISSING FROM OTHER FILE
+
+% shape factor
+r_Cx1       =  1.2568
+
+% curvature factors
+r_Ex1       = 0.65225;         % (taken from ADAMS file)
+r_Ex2       = -0.24948;    % (taken from ADAMS file)
+
+% horizontal shift
+r_Hx1       = 0.0050722
+
+%--------------------------------------------------------------------------
+% parameters for lateral force at pure side slip
+%--------------------------------------------------------------------------
+% shape factor
+p_Cy1       = 1.3507
+
+% peak values
+p_Dy1       = 1.0489 
+p_Dy2       = -0.18033
+p_Dy3       = -2.8821 
+
+% curvature factors
+p_Ey1       = -0.0074722 
+p_Ey2       = -0.0063208
+p_Ey3       = -9.9935
+p_Ey4       = -760.14  
+p_Ey5       = 0          % MISSING FROM OTHER FILE
+
+% slip stiffness
+p_Ky1       = -21.92
+p_Ky2       = 2.0012 
+p_Ky3       = -0.024778 
+%p_Ky4       = 2 %MISSING FROM OTHER FILE
+%p_Ky5       = 0 %MISSING FROM OTHER FILE
+%p_Ky6       = -0.92 %MISSING FROM OTHER FILE
+%p_Ky7       = -0.24 %MISSING FROM OTHER FILE
+
+% horizontal shift
+p_Hy1       = 0.0026747
+p_Hy2       = 8.9094e-005
+p_Hy3       = 0.031415
+
+% vertical shift
+p_Vy1       = 0.037318
+p_Vy2       = -0.010049
+p_Vy3       = -0.32931
+p_Vy4       = -0.69553
+
+%--------------------------------------------------------------------------
+% parameters for lateral force at combined slip
+%--------------------------------------------------------------------------
+% stiffness factors
+r_By1       = 7.1433
+r_By2       = 9.1916
+r_By3       = -0.027856
+r_By4       = 0     %MISSING FROM OTHER FILE
+
+% shape factor
+r_Cy1       = 1.0719
+
+% curvature factors
+r_Ey1       = -0.27572
+r_Ey2       = 0.32802 
+
+% horizontal shift
+r_Hy1       = 5.7448e-006
+r_Hy2       = -3.1368e-005 
+
+% vertical shift
+r_Vy1       = -0.027825
+r_Vy2       = 0.053604  
+r_Vy3       = -0.27568 
+r_Vy4       = 12.12 
+r_Vy5       = 1.9 
+r_Vy6       = -10.704  
+
+%--------------------------------------------------------------------------
+% parameters for self-aligning moment at pure side slip
+%--------------------------------------------------------------------------
+% stiffness factors
+q_Bz1       = 10.904
+q_Bz2       = -1.8412
+q_Bz3       = -0.52041
+q_Bz5       = 0.41511
+q_Bz6       = 0 %MISSING FROM OTHER FILE
+q_Bz9       = 8.9846  
+q_Bz10      = 0
+
+% shape factor
+q_Cz1       = 1.2136 
+
+% peak values
+q_Dz1       = 0.093509
+q_Dz2       = -0.0092183
+q_Dz3       = -0.057061 
+q_Dz4       =  0.73954 
+q_Dz6       = -0.0067783
+q_Dz7       = 0.0052254 
+q_Dz8       = -0.18175
+q_Dz9       =  0.029952
+q_Dz10      = 0 %MISSING FROM OTHER FILE
+q_Dz11      = 0 %MISSING FROM OTHER FILE
+
+% curvature factors
+q_Ez1        = -1.5697 
+q_Ez2        = 0.33394 
+q_Ez3        = 0
+q_Ez4        = 0.26711
+q_Ez5        = -3.594 
+
+% horizontal shift
+q_Hz1        = 0.0047326
+q_Hz2        = 0.0026687
+q_Hz3        = 0.11998
+q_Hz4        = 0.059083
+
+%--------------------------------------------------------------------------
+% parameters for self-aligning moment at combined slip
+%--------------------------------------------------------------------------
+s_sz1        = 0.033372
+s_sz2        = 0.0043624
+s_sz3        = 0.56742
+s_sz4        = -0.24116
+
+%--------------------------------------------------------------------------
+% parameters for normal load
+%--------------------------------------------------------------------------
+p_z1         = 15.0      % MISSING FROM OTHER FILE, BUT GIVEN AS 15 IN 205_60_R15_91V-V.tir
+
+%--------------------------------------------------------------------------
+% parameters for turn slip
+%--------------------------------------------------------------------------
+p_DxPhi1     = 0.4      % (taken from ADAMS file) MISSING FROM OTHER FILE
+p_DxPhi2     = 0        % (taken from ADAMS file) MISSING FROM OTHER FILE
+p_DxPhi3     = 0        % (taken from ADAMS file) MISSING FROM OTHER FILE
+
+p_DyPhi1     = 0.4      % (taken from ADAMS file) MISSING FROM OTHER FILE
+p_DyPhi2     = 0        % (taken from ADAMS file) MISSING FROM OTHER FILE
+p_DyPhi3     = 0        % (taken from ADAMS file) MISSING FROM OTHER FILE
+p_DyPhi4     = 0        % (taken from ADAMS file) MISSING FROM OTHER FILE
+
+p_epsGamPhi1 = 0.7      % (taken from ADAMS file) MISSING FROM OTHER FILE
+p_epsGamPhi2 = 0        % (taken from ADAMS file) MISSING FROM OTHER FILE
+
+p_HyPhi1     = 1.0      % (taken from ADAMS file) MISSING FROM OTHER FILE
+p_HyPhi2     = 0.15     % (taken from ADAMS file) MISSING FROM OTHER FILE
+p_HyPhi3     = 0        % (taken from ADAMS file) MISSING FROM OTHER FILE
+p_HyPhi4     = -4.0     % (taken from ADAMS file) MISSING FROM OTHER FILE
+
+p_KyPhi1     = 1        % (taken from ADAMS file) MISSING FROM OTHER FILE
+
+q_BrPhi1     = 0.1      % (taken from ADAMS file) MISSING FROM OTHER FILE
+
+q_CrPhi1     = 0.2      % (taken from ADAMS file) MISSING FROM OTHER FILE
+q_CrPhi2     = 0.1      % (taken from ADAMS file) MISSING FROM OTHER FILE
+
+q_DrPhi1     = 1.0      % (taken from ADAMS file) MISSING FROM OTHER FILE
+q_DrPhi2     = -1.5     % (taken from ADAMS file) MISSING FROM OTHER FILE
+
+q_DtPhi1     = 10.0     % (taken from ADAMS file) MISSING FROM OTHER FILE
+
+%--------------------------------------------------------------------------
+% parameters for rolling resistance moment
+%--------------------------------------------------------------------------
+q_sy1        = 0.01     % (taken from ADAMS file)
+q_sy2        = 0        % (taken from ADAMS file)
+
+%==========================================================================
+
+end
